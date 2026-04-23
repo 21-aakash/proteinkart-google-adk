@@ -80,43 +80,45 @@ def send_confirmation_email(order_id: int, customer_name: str, customer_email: s
     <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px;">
         <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
             <!-- Hero Header -->
-            <div style="background-color: #1a1a1a; padding: 40px 20px; text-align: center;">
-                <h1 style="color: #00ff88; margin: 0; font-size: 28px; letter-spacing: 1px;">PROTEINKART</h1>
-                <p style="color: #ffffff; margin-top: 10px; font-size: 16px;">FUEL YOUR AMBITION</p>
+            <div style="background-color: #0d2c24; padding: 50px 20px; text-align: center;">
+                <div style="color: #d4af37; font-size: 32px; font-family: 'Times New Roman', serif; letter-spacing: 4px; font-weight: 300;">PROTEINKART</div>
+                <div style="height: 1px; width: 40px; background-color: #d4af37; margin: 15px auto;"></div>
+                <p style="color: #f1f1f1; margin-top: 10px; font-size: 14px; text-transform: uppercase; letter-spacing: 2px;">The Gold Standard of Fuel</p>
             </div>
             
             <div style="padding: 40px 30px;">
-                <h2 style="color: #333; margin-top: 0;">Order Confirmed!</h2>
-                <p style="color: #666; line-height: 1.6;">Hi <strong>{customer_name}</strong>,</p>
-                <p style="color: #666; line-height: 1.6;">Your fuel is on the way. We've received your order and our team is getting it ready for dispatch.</p>
+                <h2 style="color: #0d2c24; margin-top: 0; font-weight: 400; letter-spacing: -0.5px;">Your recovery begins now.</h2>
+                <p style="color: #666; line-height: 1.6;">Dear <strong>{customer_name}</strong>,</p>
+                <p style="color: #666; line-height: 1.6;">We've received your order and our specialists are preparing your premium selection for dispatch.</p>
                 
                 <!-- Product Card -->
-                <div style="display: flex; align-items: center; background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin-top: 30px;">
-                    <img src="{product['image_url']}" alt="{product['name']}" style="width: 100px; height: 100px; object-fit: contain; border-radius: 4px;">
-                    <div style="margin-left: 20px;">
-                        <h4 style="margin: 0; color: #1a1a1a;">{product['name']}</h4>
-                        <p style="margin: 5px 0; color: #666; font-size: 14px;">{product['brand']} | {product['type']}</p>
-                        <p style="margin: 5px 0; color: #1a1a1a; font-weight: bold;">{quantity} unit(s) x ₹{product['price']}</p>
+                <div style="display: flex; align-items: center; background-color: #fcfcfc; border: 1px solid #f0f0f0; padding: 25px; border-radius: 4px; margin-top: 30px;">
+                    <img src="{product['image_url']}" alt="{product['name']}" style="width: 110px; height: 110px; object-fit: contain; border-radius: 2px;">
+                    <div style="margin-left: 25px;">
+                        <h4 style="margin: 0; color: #0d2c24; font-size: 18px; font-weight: 500;">{product['name']}</h4>
+                        <p style="margin: 5px 0; color: #888; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">{product['brand']} | {product['type']}</p>
+                        <p style="margin: 10px 0 0 0; color: #0d2c24; font-weight: 600; font-size: 16px;">{quantity} unit(s) &times; ₹{product['price']}</p>
                     </div>
                 </div>
 
                 <!-- Totals -->
-                <div style="border-top: 2px solid #eee; margin-top: 30px; padding-top: 20px;">
-                    <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: bold; color: #1a1a1a;">
-                        <span>Total Paid</span>
-                        <span style="color: #00d278;">₹{total_price}</span>
+                <div style="border-top: 1px solid #eee; margin-top: 40px; padding-top: 30px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 20px; color: #0d2c24;">
+                        <span style="font-weight: 300;">Investment in Health</span>
+                        <span style="font-weight: 600; color: #b8860b;">₹{total_price}</span>
                     </div>
                 </div>
 
-                <div style="text-align: center; margin-top: 40px;">
-                    <a href="#" style="background-color: #1a1a1a; color: #00ff88; padding: 15px 35px; text-decoration: none; border-radius: 30px; font-weight: bold; display: inline-block;">TRACK YOUR ORDER</a>
+                <div style="text-align: center; margin-top: 50px;">
+                    <a href="#" style="background-color: #0d2c24; color: #d4af37; padding: 18px 45px; text-decoration: none; border-radius: 2px; font-weight: 500; display: inline-block; letter-spacing: 1px; font-size: 14px;">TRACK SHIPMENT</a>
                 </div>
             </div>
 
-            <div style="background-color: #f9f9f9; padding: 20px; text-align: center; font-size: 12px; color: #999;">
-                <p>&copy; 2024 ProteinKart India. All Rights Reserved.</p>
-                <p>Stay Strong. Stay Healthy.</p>
+            <div style="background-color: #fbfbfb; padding: 30px; text-align: center; font-size: 11px; color: #aaa; border-top: 1px solid #f5f5f5;">
+                <p style="margin-bottom: 5px;">&copy; 2026 ProteinKart India. Crafted for Excellence.</p>
+                <p>Stay Disciplined. Stay Strong.</p>
             </div>
+
         </div>
     </body>
     </html>
@@ -143,15 +145,13 @@ class OrderRequest(BaseModel):
     customer_email: EmailStr  # Validates email format
 
 
-# ── LIFESPAN (Startup/Shutdown) ─────────────────────────────
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    init_db()
-    yield
-
-
 # ── APP INITIALIZATION ──────────────────────────────────────
-app = FastAPI(title="ProteinKart API", version="1.1.0", lifespan=lifespan)
+app = FastAPI(title="ProteinKart API", version="1.1.0")
+
+@app.on_event("startup")
+def startup_event():
+    init_db()
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -219,9 +219,15 @@ def place_order(order: OrderRequest):
 
     return {
         "order_id": order_id,
+        "product": product["name"],
+        "brand": product["brand"],
+        "quantity": order.quantity,
+        "total_price": total_price,
         "status": "placed",
+        "customer_email": order.customer_email,
         "message": f"Order #{order_id} confirmed. Email shot to {order.customer_email}"
     }
+
 
 if __name__ == "__main__":
     import uvicorn

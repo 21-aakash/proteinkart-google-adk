@@ -5,7 +5,7 @@ Welcome to the ProteinKart Agentic Workshop! You are building an **MCP (Model Co
 ## 1. Central Backend (The Startup)
 We have a central ProteinKart Backend running that manages the product catalog and order processing. Your job is to build the tool layer that lets agents (like Gemini or Claude) talk to it.
 
-**Backend API Base URL:** `[YOUR_DEPLOYED_BACKEND_URL_HERE]`
+**Backend API Base URL:** `https://proteinkart-google-adk-431844677592.europe-west1.run.app`
 
 ---
 
@@ -50,7 +50,7 @@ Copy and paste the prompt below into your favorite AI coding assistant (Gemini, 
 > **The Prompt:**
 > "I need to build a Python MCP server using the `mcp[cli]` and `httpx` libraries for a startup called ProteinKart. 
 > 
-> The backend API is located at: **[YOUR_DEPLOYED_BACKEND_URL_HERE]**
+> The backend API is located at: **https://proteinkart-google-adk-431844677592.europe-west1.run.app**
 > 
 > Build an MCP server that exposes 3 tools:
 > 1. `search_proteins`: Connects to `GET /api/products`. Support filters. **Include a small Markdown thumbnail for each product in the list.**
