@@ -88,7 +88,7 @@ def send_confirmation_email(order_id: int, customer_name: str, customer_email: s
                 rel="stylesheet">
             <style>
                 body {
-                        {
+
                         margin: 0;
                         padding: 0;
                         background-color: #F1F5F9;
