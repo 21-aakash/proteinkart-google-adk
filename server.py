@@ -77,7 +77,14 @@ def send_confirmation_email(order_id: int, customer_name: str, customer_email: s
     msg.set_content(text_content)
 
     from datetime import datetime, timedelta
-    arriving_date = (datetime.now() + timedelta(days=3)).strftime("%A, %B %dth")
+    now = datetime.now()
+    arriving_date = (now + timedelta(days=3)).strftime("%A, %B %dth")
+    order_date = now.strftime("%b %d, %Y")
+    product_name = product["name"]
+    brand = product["brand"]
+    status = "confirmed"
+    product_image = product["image_url"]
+
 
 
     # Premium HTML Version (Refined based on Nakpro/Shiprocket visuals)
@@ -228,7 +235,9 @@ def send_confirmation_email(order_id: int, customer_name: str, customer_email: s
                                                         <td>
                                                             <div
                                                                 style="font-size:14px; font-weight:700; color:#0F172A; margin-bottom:4px;">
-                                                                {product}</div>
+                                                                <img src="{product_image}" alt="{product_name}" style="width:100px; height:100px;">
+                                                            </div>
+                                                            
                                                             <div style="font-size:13px; color:#64748B;">Brand: {brand}
                                                                 &nbsp;·&nbsp; Qty: {quantity}</div>
                                                         </td>
