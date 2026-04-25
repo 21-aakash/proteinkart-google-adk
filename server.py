@@ -119,7 +119,7 @@ def send_confirmation_email(order_id: int, customer_name: str, customer_email: s
                                     <img src="https://cdn-icons-png.flaticon.com/512/2311/2311524.png" width="100" alt="Shipping" style="display: block; margin: 0 auto;">
                                 </div>
 
-                                <div style="font-size: 16px; color: #64748B; margin-bottom: 8px;">Hi <strong>{customer_name}</strong>,</div>
+                                                                 <div style="font-size: 16px; color: #64748B; margin-bottom: 8px;">Hi <strong>{customer_name}</strong>,</div>
                                 <div style="font-size: 28px; font-weight: 800; color: #0F172A; margin-bottom: 12px; letter-spacing: -0.5px;">Your order has been shipped!</div>
                                 <div style="font-size: 15px; color: #64748B; margin-bottom: 32px; line-height: 1.6; max-width: 480px;">
                                     We have shipped your ProteinKart order. Your fuel is on its way to help you crush your fitness goals.
