@@ -80,10 +80,6 @@ def send_confirmation_email(order_id: int, customer_name: str, customer_email: s
     arriving_date = (datetime.now() + timedelta(days=3)).strftime("%A, %B %dth")
 
 
-
-
-
-
     # Premium HTML Version (Refined based on Nakpro/Shiprocket visuals)
     html_content = f"""
         <!DOCTYPE html>
@@ -95,7 +91,7 @@ def send_confirmation_email(order_id: int, customer_name: str, customer_email: s
             <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
                 rel="stylesheet">
             <style>
-                body { margin: 0;  padding: 0; background-color: #F1F5F9; font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-font-smoothing: antialiased;}
+                body {{ margin: 0;  padding: 0; background-color: #F1F5F9; font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-font-smoothing: antialiased;}}
             </style>
         </head>
         
