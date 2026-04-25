@@ -65,7 +65,7 @@ def send_confirmation_email(order_id: int, customer_name: str, customer_email: s
         return False
 
     msg = EmailMessage()
-    msg['Subject'] = f"✅ Order Confirmed: {"#"}{order_id} | ProteinKart"
+    msg['Subject'] = f"✅ Order Confirmed: {'#'}{order_id} | ProteinKart"
     msg['From'] = f"ProteinKart <{FROM_EMAIL}>"
     msg['To'] = customer_email
 
