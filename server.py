@@ -78,193 +78,293 @@ def send_confirmation_email(order_id: int, customer_name: str, customer_email: s
 
     # Premium HTML Version (Refined based on Nakpro/Shiprocket visuals)
     html_content = f"""
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-        <style>
-            body {{
-                margin: 0;
-                padding: 0;
-                background-color: #F8FAFC;
-                font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                -webkit-font-smoothing: antialiased;
-            }}
-        </style>
-    </head>
-    <body>
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #F8FAFC; padding: 20px;">
-            <tr>
-                <td align="center">
-                    <!-- Outer Container -->
-                    <table width="600" border="0" cellspacing="0" cellpadding="0" style="background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;">
-                        
-                        <!-- Header -->
-                        <tr>
-                            <td align="center" style="padding: 40px 0; background: #ffffff;">
-                                <div style="font-size: 24px; font-weight: 800; color: #0d2c24; letter-spacing: 4px; text-transform: uppercase;">PROTEINKART</div>
-                                <div style="height: 2px; width: 40px; background-color: #d4af37; margin: 12px auto;"></div>
-                            </td>
-                        </tr>
+        <!DOCTYPE html>
+        <html>
+        
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+                rel="stylesheet">
+            <style>
+                body {
+                        {
+                        margin: 0;
+                        padding: 0;
+                        background-color: #F1F5F9;
+                        font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+                        -webkit-font-smoothing: antialiased;
+                    }
+                }
+            </style>
+        </head>
+        
+        <body>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#F1F5F9; padding:32px 16px;">
+                <tr>
+                    <td align="center">
+                        <table width="620" border="0" cellspacing="0" cellpadding="0"
+                            style="background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,0.07); border:1px solid #E2E8F0;">
+        
+                            <!-- TOP BANNER -->
+                            <tr>
+                                <td
+                                    style="background: linear-gradient(135deg, #0d2c24 0%, #1a4d3a 100%); padding: 36px 48px; text-align:center;">
+                                    <div
+                                        style="font-size:10px; color:#d4af37; letter-spacing:6px; text-transform:uppercase; margin-bottom:10px; font-weight:600;">
+                                        Premium Nutrition</div>
+                                    <div
+                                        style="font-size:28px; font-weight:800; color:#ffffff; letter-spacing:5px; text-transform:uppercase;">
+                                        PROTEINKART</div>
+                                    <div style="height:2px; width:48px; background:#d4af37; margin:14px auto 0;"></div>
+                                </td>
+                            </tr>
+        
+                            <!-- SHIPPED HERO -->
+                            <tr>
+                                <td style="padding:40px 48px 0; text-align:center;">
+                                    <div style="font-size:56px; margin-bottom:16px;">📦</div>
+                                    <div
+                                        style="font-size:13px; color:#4F46E5; font-weight:700; letter-spacing:3px; text-transform:uppercase; margin-bottom:10px;">
+                                        Order Shipped</div>
+                                    <div
+                                        style="font-size:30px; font-weight:800; color:#0F172A; letter-spacing:-0.5px; margin-bottom:12px;">
+                                        It's on its way, {customer_name.split()[0]}! 💪</div>
+                                    <div
+                                        style="font-size:15px; color:#64748B; line-height:1.7; max-width:460px; margin:0 auto 32px;">
+                                        Your ProteinKart order has been dispatched and is heading your way.
+                                        Get your shaker ready — your fuel is almost here.
+                                    </div>
+                                </td>
+                            </tr>
+        
+                            <!-- ARRIVAL CARD -->
+                            <tr>
+                                <td style="padding:0 48px;">
+                                    <div
+                                        style="background:linear-gradient(135deg, #EEF2FF, #E0E7FF); border-radius:16px; padding:28px 32px; border:1px solid #C7D2FE; text-align:center; margin-bottom:28px;">
+                                        <div
+                                            style="font-size:11px; color:#4F46E5; text-transform:uppercase; font-weight:700; letter-spacing:3px; margin-bottom:6px;">
+                                            Estimated Delivery</div>
+                                        <div style="font-size:26px; font-weight:800; color:#3730A3; margin-bottom:8px;">
+                                            {arriving_date}</div>
+                                        <div style="font-size:13px; color:#6366F1;">Order ID: <strong>#{order_id}</strong></div>
+                                    </div>
+                                </td>
+                            </tr>
+        
+                            <!-- TRACKING STEPS -->
+                            <tr>
+                                <td style="padding:0 48px 32px;">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td align="center" width="22%">
+                                                <div
+                                                    style="width:44px;height:44px;border-radius:12px;background:#4F46E5;display:inline-block;line-height:44px;color:#fff;font-size:18px;font-weight:700;">
+                                                    ✓</div>
+                                                <div
+                                                    style="font-size:10px;margin-top:7px;color:#1E293B;font-weight:700;text-transform:uppercase;letter-spacing:1px;">
+                                                    Ordered</div>
+                                                <div style="font-size:10px;color:#94A3B8;margin-top:2px;">{order_date}</div>
+                                            </td>
+                                            <td valign="top" style="padding-top:22px;">
+                                                <div style="height:4px;background:#4F46E5;border-radius:2px;"></div>
+                                            </td>
+                                            <td align="center" width="22%">
+                                                <div
+                                                    style="width:44px;height:44px;border-radius:12px;background:#4F46E5;display:inline-block;line-height:44px;color:#fff;font-size:18px;">
+                                                    ✓</div>
+                                                <div
+                                                    style="font-size:10px;margin-top:7px;color:#1E293B;font-weight:700;text-transform:uppercase;letter-spacing:1px;">
+                                                    Packed</div>
+                                                <div style="font-size:10px;color:#94A3B8;margin-top:2px;">Today</div>
+                                            </td>
+                                            <td valign="top" style="padding-top:22px;">
+                                                <div
+                                                    style="height:4px;background:linear-gradient(to right,#4F46E5,#E2E8F0);border-radius:2px;">
+                                                </div>
+                                            </td>
+                                            <td align="center" width="22%">
+                                                <div
+                                                    style="width:44px;height:44px;border-radius:12px;border:2.5px solid #6366F1;background:#EEF2FF;display:inline-block;line-height:40px;color:#6366F1;font-size:20px;box-sizing:border-box;">
+                                                    🚚</div>
+                                                <div
+                                                    style="font-size:10px;margin-top:7px;color:#6366F1;font-weight:700;text-transform:uppercase;letter-spacing:1px;">
+                                                    In Transit</div>
+                                                <div style="font-size:10px;color:#94A3B8;margin-top:2px;">En route</div>
+                                            </td>
+                                            <td valign="top" style="padding-top:22px;">
+                                                <div style="height:4px;background:#E2E8F0;border-radius:2px;"></div>
+                                            </td>
+                                            <td align="center" width="22%">
+                                                <div
+                                                    style="width:44px;height:44px;border-radius:12px;border:2px solid #E2E8F0;background:#F8FAFC;display:inline-block;line-height:40px;color:#CBD5E1;font-size:20px;box-sizing:border-box;">
+                                                    🏠</div>
+                                                <div
+                                                    style="font-size:10px;margin-top:7px;color:#94A3B8;font-weight:500;text-transform:uppercase;letter-spacing:1px;">
+                                                    Delivered</div>
+                                                <div style="font-size:10px;color:#CBD5E1;margin-top:2px;">Soon</div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+        
+                            <!-- DIVIDER -->
+                            <tr>
+                                <td style="padding:0 48px;">
+                                    <div style="height:1px;background:#F1F5F9;"></div>
+                                </td>
+                            </tr>
+        
+                            <!-- ORDER SUMMARY -->
+                            <tr>
+                                <td style="padding:28px 48px;">
+                                    <div
+                                        style="font-size:12px; font-weight:700; color:#94A3B8; text-transform:uppercase; letter-spacing:2px; margin-bottom:16px;">
+                                        Order Summary</div>
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                        style="background:#F8FAFC; border-radius:14px; overflow:hidden; border:1px solid #E2E8F0;">
+                                        <tr>
+                                            <td style="padding:20px 24px; border-bottom:1px solid #E2E8F0;">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                    <tr>
+                                                        <td>
+                                                            <div
+                                                                style="font-size:14px; font-weight:700; color:#0F172A; margin-bottom:4px;">
+                                                                {product}</div>
+                                                            <div style="font-size:13px; color:#64748B;">Brand: {brand}
+                                                                &nbsp;·&nbsp; Qty: {quantity}</div>
+                                                        </td>
+                                                        <td align="right">
+                                                            <div style="font-size:16px; font-weight:800; color:#0F172A;
+        ">₹{total_price:,}</div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:14px 24px; border-bottom:1px solid #E2E8F0;">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                    <tr>
+                                                        <td style="font-size:13px; color:#64748B;">Shipping</td>
+                                                        <td align="right"
+                                                            style="font-size:13px; color:#16A34A; font-weight:600;">FREE</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:14px 24px;">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                    <tr>
+                                                        <td style="font-size:14px; font-weight:700; color:#0F172A;">Total Paid
+                                                        </td>
+                                                        <td align="right"
+                                                            style="font-size:18px; font-weight:800; color:#4F46E5;">
+                                                            ₹{total_price:,}</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+        
+                            <!-- ORDER DETAILS GRID -->
+                            <tr>
+                                <td style="padding:0 48px 28px;">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td width="50%" style="padding-right:8px;">
+                                                <div
+                                                    style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:16px 20px;">
+                                                    <div
+                                                        style="font-size:10px; color:#94A3B8; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:6px;">
+                                                        Order ID</div>
+                                                    <div style="font-size:14px; font-weight:700; color:#0F172A;">#{order_id}
+                                                    </div>
+                                                    <div style="font-size:12px; color:#64748B; margin-top:2px;">{order_date}
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td width="50%" style="padding-left:8px;">
+                                                <div
+                                                    style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:16px 20px;">
+                                                    <div
+                                                        style="font-size:10px; color:#94A3B8; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:6px;">
+                                                        Status</div>
+                                                    <div
+                                                        style="font-size:13px; font-weight:700; color:#16A34A; text-transform:capitalize;">
+                                                        ✓ {status}</div>
+                                                    <div style="font-size:12px; color:#64748B; margin-top:4px;">{customer_email}
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+        
+                            <!-- TIPS BANNER -->
+                            <tr>
+                                <td style="padding:0 48px 32px;">
+                                    <div
+                                        style="background:linear-gradient(135deg, #0d2c24, #1a4d3a); border-radius:16px; padding:24px 28px;">
+                                        <div
+                                            style="font-size:13px; font-weight:700; color:#d4af37; margin-bottom:10px; letter-spacing:1px; text-transform:uppercase;">
+                                            💡 Pro Tip While You Wait</div>
+                                        <div style="font-size:14px; color:#CBD5E1; line-height:1.7;">
+                                            Take your whey within <strong style="color:#fff;">30 minutes post-workout</strong>
+                                            for maximum muscle synthesis. Mix with cold water or milk for best results.
+                                            Consistency &gt; Perfection. 🏋️
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+        
+                            <!-- NEED HELP -->
+                            <tr>
+                                <td style="padding:0 48px 32px; text-align:center;">
+                                    <div style="font-size:14px; color:#64748B; margin-bottom:12px;">Questions about your order?
+                                    </div>
+                                    <a href="mailto:support@proteinkart.in"
+                                        style="display:inline-block; background:#0F172A; color:#ffffff; font-size:13px; font-weight:700; padding:12px 28px; border-radius:10px; text-decoration:none; letter-spacing:0.5px;">Contact
+                                        Support</a>
+                                </td>
+                            </tr>
+        
+                            <!-- FOOTER -->
+                            <tr>
+                                <td
+                                    style="background:#F8FAFC; border-top:1px solid #E2E8F0; padding:24px 48px; text-align:center;">
+                                    <div style="font-size:18px; margin-bottom:8px;">💪 &nbsp; 🥛 &nbsp; 🏋️</div>
+                                    <div style="font-size:12px; color:#94A3B8; margin-bottom:4px;">© 2026 ProteinKart. All
+                                        rights reserved.</div>
+                                    <div style="font-size:12px; color:#CBD5E1;">This email was sent to {customer_email}</div>
+                                    <div style="margin-top:12px;">
+                                        <a href="#"
+                                            style="font-size:11px; color:#94A3B8; text-decoration:none; margin:0 8px;">Unsubscribe</a>
+                                        <span style="color:#E2E8F0;">|</span>
+                                        <a href="#"
+                                            style="font-size:11px; color:#94A3B8; text-decoration:none; margin:0 8px;">Privacy
+                                            Policy</a>
+                                        <span style="color:#E2E8F0;">|</span>
+                                        <a href="#"
+                                            style="font-size:11px; color:#94A3B8; text-decoration:none; margin:0 8px;">Terms</a>
+                                    </div>
+                                </td>
+                            </tr>
+        
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </body>
 
-                        <!-- Content -->
-                        <tr>
-                            <td align="center" style="padding: 0 40px;">
-                                <!-- Delivery Illustration -->
-                                <div style="margin-bottom: 24px;">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/2311/2311524.png" width="100" alt="Shipping" style="display: block; margin: 0 auto;">
-                                </div>
-
-                                                                 <div style="font-size: 16px; color: #64748B; margin-bottom: 8px;">Hi <strong>{customer_name}</strong>,</div>
-                                <div style="font-size: 28px; font-weight: 800; color: #0F172A; margin-bottom: 12px; letter-spacing: -0.5px;">Your order has been shipped!</div>
-                                <div style="font-size: 15px; color: #64748B; margin-bottom: 32px; line-height: 1.6; max-width: 480px;">
-                                    We have shipped your ProteinKart order. Your fuel is on its way to help you crush your fitness goals.
-                                </div>
-                                
-                                <!-- Arriving Section -->
-                                <div style="background-color: #EEF2FF; border-radius: 16px; padding: 24px; margin-bottom: 40px; border: 1px solid #E0E7FF;">
-                                    <div style="font-size: 12px; color: #4F46E5; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; margin-bottom: 4px;">Estimated Arrival</div>
-                                    <div style="font-size: 32px; font-weight: 800; color: #4F46E5;">{arriving_date}</div>
-                                </div>
-
-                                <!-- Tracking Progress Bar -->
-                                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 48px;">
-                                    <tr>
-                                        <!-- Order Placed (Marked) -->
-                                        <td align="center" width="25%">
-                                            <div style="width: 40px; height: 40px; border-radius: 12px; background-color: #4F46E5; display: inline-block; line-height: 40px; color: white; font-size: 18px;">✓</div>
-                                            <div style="font-size: 11px; margin-top: 8px; color: #1E293B; font-weight: 600;">Ordered</div>
-                                        </td>
-                                        <!-- Line 1 -->
-                                        <td valign="top" style="padding-top: 20px;">
-                                            <div style="height: 4px; background-color: #4F46E5; border-radius: 2px;"></div>
-                                        </td>
-                                        <!-- Shipped (Unmarked) -->
-                                        <td align="center" width="25%">
-                                            <div style="width: 40px; height: 40px; border-radius: 12px; border: 2px solid #E2E8F0; background-color: #F8FAFC; display: inline-block; line-height: 36px; color: #94A3B8; font-size: 18px; box-sizing: border-box;">📦</div>
-                                            <div style="font-size: 11px; margin-top: 8px; color: #94A3B8; font-weight: 500;">Shipped</div>
-                                        </td>
-                                        <!-- Line 2 -->
-                                        <td valign="top" style="padding-top: 20px;">
-                                            <div style="height: 4px; background-color: #E2E8F0; border-radius: 2px;"></div>
-                                        </td>
-                                        <!-- In Transit (Unmarked) -->
-                                        <td align="center" width="25%">
-                                            <div style="width: 40px; height: 40px; border-radius: 12px; border: 2px solid #E2E8F0; background-color: #F8FAFC; display: inline-block; line-height: 36px; color: #94A3B8; font-size: 18px; box-sizing: border-box;">🚚</div>
-                                            <div style="font-size: 11px; margin-top: 8px; color: #94A3B8; font-weight: 500;">In Transit</div>
-                                        </td>
-                                        <!-- Line 3 -->
-                                        <td valign="top" style="padding-top: 20px;">
-                                            <div style="height: 4px; background-color: #E2E8F0; border-radius: 2px;"></div>
-                                        </td>
-                                        <!-- Delivered (Unmarked) -->
-                                        <td align="center" width="25%">
-                                            <div style="width: 40px; height: 40px; border-radius: 12px; border: 2px solid #E2E8F0; background-color: #F8FAFC; display: inline-block; line-height: 36px; color: #94A3B8; font-size: 18px; box-sizing: border-box;">🏠</div>
-                                            <div style="font-size: 11px; margin-top: 8px; color: #94A3B8; font-weight: 500;">Delivered</div>
-                                        </td>
-                                    </tr>
-                                </table>
-
-                                <!-- Track Button -->
-                                <div style="margin-bottom: 48px;">
-                                    <a href="#" style="background-color: #22C55E; color: white; padding: 18px 48px; text-decoration: none; border-radius: 12px; font-weight: 700; display: inline-block; font-size: 16px; box-shadow: 0 10px 20px rgba(34, 197, 94, 0.2);">Track Your Order</a>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <!-- Order Details -->
-                        <tr>
-                            <td style="padding: 40px; background-color: #F8FAFC; border-top: 1px solid #E2E8F0;">
-                                <div style="font-size: 18px; font-weight: 700; color: #0F172A; margin-bottom: 24px;">Shipment Summary</div>
-                                
-                                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #ffffff; border-radius: 12px; border: 1px solid #E2E8F0; overflow: hidden;">
-                                    <tr>
-                                        <td width="120" style="padding: 20px;">
-                                            <img src="{product['image_url']}" width="100" height="100" style="object-fit: contain; border-radius: 8px; border: 1px solid #F1F5F9;">
-                                        </td>
-                                        <td style="padding: 20px 20px 20px 0;">
-                                            <div style="font-size: 16px; font-weight: 700; color: #0F172A; margin-bottom: 4px;">{product['name']}</div>
-                                            <div style="font-size: 13px; color: #64748B; margin-bottom: 12px;">Qty: {quantity} | {product['brand']}</div>
-                                            
-                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                <tr>
-                                                    <td style="font-size: 14px; color: #64748B;">Amount</td>
-                                                    <td align="right" style="font-size: 14px; color: #0F172A; font-weight: 600;">₹{product['price']}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="font-size: 14px; color: #64748B; padding-top: 4px;">Shipping</td>
-                                                    <td align="right" style="font-size: 14px; color: #22C55E; font-weight: 600; padding-top: 4px;">FREE</td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="font-size: 16px; color: #0F172A; font-weight: 700; padding-top: 16px; border-top: 1px solid #F1F5F9; margin-top: 12px;">Total Paid</td>
-                                                    <td align="right" style="font-size: 18px; color: #0F172A; font-weight: 800; padding-top: 16px; border-top: 1px solid #F1F5F9; margin-top: 12px;">₹{total_price}</td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-
-                        <!-- Shipping Info -->
-                        <tr>
-                            <td style="padding: 40px; background-color: #ffffff;">
-                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                        <td width="50%" valign="top" style="padding-right: 20px;">
-                                            <div style="font-size: 12px; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Delivery Address</div>
-                                            <div style="font-size: 14px; color: #1E293B; line-height: 1.6;">
-                                                <strong>{customer_name}</strong><br>
-                                                5/3, Gomti Niwas, Vijay Nagar<br>
-                                                Indore, MP 452010
-                                            </div>
-                                        </td>
-                                        <td width="50%" valign="top" style="padding-left: 20px; border-left: 1px solid #E2E8F0;">
-                                            <div style="font-size: 12px; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Order Info</div>
-                                            <div style="font-size: 13px; color: #64748B; margin-bottom: 6px;">Order ID: <span style="color: #0F172A; font-weight: 600;">#{order_id}</span></div>
-                                            <div style="font-size: 13px; color: #64748B; margin-bottom: 6px;">Courier: <span style="color: #0F172A; font-weight: 600;">BLUE DART</span></div>
-                                            <div style="font-size: 13px; color: #64748B;">AWB No: <span style="color: #4F46E5; font-weight: 600;">PK{order_id}SHP</span></div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-
-                        <!-- Footer -->
-                        <tr>
-                            <td align="center" style="padding: 40px; background-color: #0d2c24;">
-                                <div style="font-size: 18px; font-weight: 800; color: #d4af37; letter-spacing: 3px; margin-bottom: 8px;">PROTEINKART</div>
-                                <div style="font-size: 11px; color: #7A8E89; margin-bottom: 24px;">The Gold Standard of Performance Fuel</div>
-                                <div style="height: 1px; width: 60px; background-color: #1a4d3f; margin-bottom: 24px;"></div>
-                                <div style="font-size: 10px; color: #d4af37; text-transform: uppercase; letter-spacing: 2px;">Stay Strong. Stay Disciplined.</div>
-                            </td>
-                        </tr>
-                    </table>
-                    
-                    <!-- Bottom bar -->
-                    <div style="height: 6px; width: 600px; background: linear-gradient(90deg, #4F46E5 0%, #22C55E 100%); border-radius: 0 0 16px 16px;"></div>
-                    
-                    <table width="600" border="0" cellspacing="0" cellpadding="0" style="margin-top: 24px;">
-                        <tr>
-                            <td align="center" style="font-size: 12px; color: #94A3B8;">
-                                &copy; 2026 ProteinKart India. All Rights Reserved.<br>
-                                <a href="#" style="color: #94A3B8; text-decoration: underline;">Unsubscribe</a> | <a href="#" style="color: #94A3B8; text-decoration: underline;">Support</a>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-    </body>
-    </html>
-    """
-
-
-    
+       </html>
+        """
     msg.add_alternative(html_content, subtype='html')
 
     try:
