@@ -262,6 +262,9 @@ def send_confirmation_email(order_id: int, customer_name: str, customer_email: s
     </body>
     </html>
     """
+
+
+    
     msg.add_alternative(html_content, subtype='html')
 
     try:
