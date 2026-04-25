@@ -148,7 +148,7 @@ def send_confirmation_email(order_id: int, customer_name: str, customer_email: s
                                             Estimated Delivery</div>
                                         <div style="font-size:26px; font-weight:800; color:#3730A3; margin-bottom:8px;">
                                             {arriving_date}</div>
-                                        <div style="font-size:13px; color:#6366F1;">Order ID: <strong>{"#"}{order_id}</strong></div>
+                                        <div style="font-size:13px; color:#6366F1;">Order ID: <strong>{'#'}{order_id}</strong></div>
                                     </div>
                                 </td>
                             </tr>
@@ -283,7 +283,7 @@ def send_confirmation_email(order_id: int, customer_name: str, customer_email: s
                                                     <div
                                                         style="font-size:10px; color:#94A3B8; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:6px;">
                                                         Order ID</div>
-                                                    <div style="font-size:14px; font-weight:700; color:#0F172A;">{"#"}{order_id}
+                                                    <div style="font-size:14px; font-weight:700; color:#0F172A;">{'#'}{order_id}
                                                     </div>
                                                     <div style="font-size:12px; color:#64748B; margin-top:2px;">{order_date}
                                                     </div>
@@ -363,8 +363,11 @@ def send_confirmation_email(order_id: int, customer_name: str, customer_email: s
             </table>
         </body>
 
+
        </html>
         """
+
+
     msg.add_alternative(html_content, subtype='html')
 
     try:
